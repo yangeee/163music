@@ -5,16 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./admin.css">
     <title>管理界面</title>
 </head>
 
 <body>
     <div id="yyy">
-
-            <button id="pickfiles">点击或拖拽上传</button>
+        <div id="pickfiles" class="pickfiles">点击或拖拽上传</div>
+        <div>上传状态：<span class="status">准备上传</span>
     </div>
-        
-    <p>sss</p>
   
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
     <script src="../vendors/moxie.min.js"></script>
@@ -32,7 +31,7 @@
             // uptoken : '', //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
             // unique_names: true, // 默认 false，key为文件名。若开启该选项，SDK为自动生成上传成功后的key（文件名）。
             // save_key: true,   // 默认 false。若在服务端生成uptoken的上传策略中指定了 `sava_key`，则开启，SDK会忽略对key的处理
-            domain: 'http://qiniu-plupload.qiniudn.com/',   //bucket 域名，下载资源时用到，**必需**
+            domain: 'poapwo9ks.bkt.clouddn.com',   //bucket 域名，下载资源时用到，**必需** http://qiniu-plupload.qiniudn.com/
             get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
             max_file_size: '100mb',           //最大文件体积限制
             max_retries: 3,                   //上传失败最大重试次数
@@ -50,8 +49,14 @@
                 },
                 'UploadProgress': function (up, file) {
                     // 每个文件上传时,处理相关的事情
+                    $(".status").text('上传中')
                 },
                 'FileUploaded': function (up, file, info) {
+                    $(".status").text('上传完毕')
+                    setTimeout(() => {
+                        $(".status").text('准备上传')
+                    }, 2000);
+                    
                     // 每个文件上传成功后,处理相关的事情
                     // 其中 info.response 是文件上传成功后，服务端返回的json，形式如
                     // {
@@ -60,9 +65,9 @@
                     //  }
                     // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
 
-                    // var domain = up.getOption('domain');
-                    // var res = parseJSON(info.response);
-                    // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
+                    var domain = up.getOption('domain');
+                    var res = JSON.parse(info.response);
+                    var sourceLink = domain + res.key; //获取上传成功后的文件的Url
                 },
                 'Error': function (up, err, errTip) {
                     console.log(err)
@@ -70,15 +75,8 @@
                 },
                 'UploadComplete': function () {
                     //队列文件处理完毕后,处理相关的事情
-                },
-                'Key': function (up, file) {
-                    // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                    // 该配置必须要在 unique_names: false , save_key: false 时才生效
-
-                    var key = "";
-                    // do something with key here
-                    return key
                 }
+             
             }
         });
 
