@@ -1,0 +1,5 @@
+window.eventHub = {
+    emit: function(){
+        
+    }
+}
