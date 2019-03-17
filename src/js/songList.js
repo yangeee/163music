@@ -52,6 +52,17 @@
         bindEvents() {
             $(this.view.el).on('click', 'li', (e) => {
                 this.view.activeItem(e.currentTarget)
+                let songId = e.currentTarget.getAttribute('data-id')
+                let data = {}
+                let songs = this.model.data.songs
+                for(let i=0; i<songs.length; i++){
+                    if(songs[i].id === songId){
+                        data = songs[i]
+                        break
+                    }
+                }
+                window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
+                console.log(object)
             })
         },
         bindEventHub() {
@@ -62,6 +73,7 @@
                 this.model.data.songs.push(data)
                 this.view.render(this.model.data)
             })
+
         },
         getAllSongs() {
             this.model.find().then(() => {

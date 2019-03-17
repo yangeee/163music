@@ -1,27 +1,37 @@
 {
     let view = {
         el: '.newSong',
-        template:`
+        template: `
           新建歌曲
         `,
-        render(data){
+        render(data) {
             $(this.el).html(this.template)
         }
     }
     let model = {}
     let controller = {
-        init(view, model){
+        init(view, model) {
             this.view = view
             this.model = model
             this.active()
+            this.bindEventHub()
             this.view.render(this.model.data)
-            window.eventHub.on('upload', (data)=>{
+        },
+        active() {
+            $(this.view.el).addClass('active')
+        },
+        deactive(){
+            $(this.view.el).removeClass('active')
+        },
+        bindEventHub() {
+            window.eventHub.on('upload', (data) => {
                 this.active()
             })
-        },
-        active(){
-            $(this.view.el).addClass('active')
-        }   
+            window.eventHub.on('select', ()=>{
+                this.deactive()
+            })
+        }
+
     }
     controller.init(view, model)
 }
