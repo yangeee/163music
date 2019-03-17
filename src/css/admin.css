@@ -30,6 +30,9 @@ body{
     text-align: center;
     padding: 10px;
 }
+.newSong.active{
+    background: #D4D4D4
+}
 .songList{
     text-align: left;
     border-top: 1px solid #999;
@@ -37,12 +40,16 @@ body{
     border: 1px solid red;
 }
 .songList-wrapper{
-    margin: 0 20px 20px 20px;
+    margin: 0 0 20px 0;
+}
+.songList-wrapper .active{
+    background: #D4D4D4;
 }
 .songList-wrapper > li{
     text-align: left;
     border-bottom: 1px solid #ddd;
     padding: 15px;
+    cursor: pointer;
 }
 .uploadArea{
     

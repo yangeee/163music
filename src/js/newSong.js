@@ -1,7 +1,6 @@
 {
-    console.log(window.eventHub)
     let view = {
-        el: 'aside > .newSong',
+        el: '.newSong',
         template:`
           新建歌曲
         `,
@@ -14,11 +13,15 @@
         init(view, model){
             this.view = view
             this.model = model
+            this.active()
             this.view.render(this.model.data)
             window.eventHub.on('upload', (data)=>{
-                console.log('new song')
+                this.active()
             })
-        }
+        },
+        active(){
+            $(this.view.el).addClass('active')
+        }   
     }
     controller.init(view, model)
 }

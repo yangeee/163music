@@ -11,13 +11,11 @@ window.eventHub = {
             }
         }
     },
-    on(eventname, fn) { //订阅
+    on(eventname, fn) { //订阅,创建一个事件，并且准备处理
         if (this.events[eventname] === undefined) {
             this.events[eventname] = []
         }
         this.events[eventname].push(fn)
-
-
     },
     off() {
 

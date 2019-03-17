@@ -4,6 +4,7 @@
         find(selector){
             return $(this.el).find(selector)[0]
         }
+
     }
     let model = {}
     let controller = {
@@ -58,8 +59,8 @@
                         var response = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + + '/' + encodeURIComponent(response.key); //获取上传成功后的文件的Url
                         window.eventHub.emit('upload', {
-                            link: sourceLink,
-                            key: response.key
+                            url: sourceLink,
+                            name: response.key
                         })
 
                     },
