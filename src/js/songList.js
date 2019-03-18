@@ -62,18 +62,25 @@
                     }
                 }
                 window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
-                console.log(object)
             })
         },
         bindEventHub() {
-            window.eventHub.on('upload', () => {
+            window.eventHub.on('new', () => {
                 this.view.clearActive()
             })
             window.eventHub.on('create', (data) => {
                 this.model.data.songs.push(data)
                 this.view.render(this.model.data)
             })
-
+            window.eventHub.on('update', (song)=>{
+                let songs = this.model.data.songs
+                for(let i=0; i<songs.length; i++){
+                    if(songs[i].id === song.id){
+                        Object.assign(songs[i], song)
+                    }
+                }
+                this.view.render(this.model.data)
+            })
         },
         getAllSongs() {
             this.model.find().then(() => {

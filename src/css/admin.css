@@ -29,6 +29,7 @@ body{
 .newSong{
     text-align: center;
     padding: 10px;
+    cursor: pointer;
 }
 .newSong.active{
     background: #D4D4D4

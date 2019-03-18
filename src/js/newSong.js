@@ -24,11 +24,14 @@
             $(this.view.el).removeClass('active')
         },
         bindEventHub() {
-            window.eventHub.on('upload', (data) => {
+            window.eventHub.on('new', (data) => {
                 this.active()
             })
             window.eventHub.on('select', ()=>{
                 this.deactive()
+            })
+            $(this.view.el).on('click', ()=>{
+                window.eventHub.emit('new')
             })
         }
 
