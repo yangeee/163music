@@ -36,6 +36,7 @@
                     },
                     'BeforeUpload': function (up, file) {
                         // 每个文件上传前,处理相关的事情
+                        window.eventHub.emit('new')
                     },
                     'UploadProgress': function (up, file) {
                         // 每个文件上传时,处理相关的事情

@@ -7,10 +7,14 @@
         `,
         render(data) {
             $(this.el).html(this.template)
-            let { songs } = data
-            let liList = songs.map((songs) =>
-                $('<li></li>').text(songs.name).attr('data-id', songs.id)
-            )
+            let { songs, selectedSongId } = data
+            let liList = songs.map((song) => {
+                let $li = $('<li></li>').text(song.name).attr('data-id', song.id)
+                if (song.id === selectedSongId) {
+                    $li.addClass('active')
+                }     
+                return $li
+            })   
             $(this.el).find('div.songList-wrapper').empty()
             liList.map((domLi) => {
                 $(this.el).find('div.songList-wrapper').append(domLi)
@@ -18,18 +22,14 @@
         },
         clearActive() {
             $(this.el).find(".active").removeClass('active')
-        },
-        activeItem(target) {
-            let $li = $(target)
-            $li.addClass('active').siblings('.active').removeClass('active')
         }
-
     }
     let model = {
         data: {
             songs: [
 
-            ]
+            ],
+            selectedSongId: undefined
         },
         find() {
             var query = new AV.Query('PlayList')
@@ -51,12 +51,14 @@
         },
         bindEvents() {
             $(this.view.el).on('click', 'li', (e) => {
-                this.view.activeItem(e.currentTarget)
                 let songId = e.currentTarget.getAttribute('data-id')
+                this.model.data.selectedSongId = songId
+                console.log(this.model.data)
+                this.view.render(this.model.data)
                 let data = {}
                 let songs = this.model.data.songs
-                for(let i=0; i<songs.length; i++){
-                    if(songs[i].id === songId){
+                for (let i = 0; i < songs.length; i++) {
+                    if (songs[i].id === songId) {
                         data = songs[i]
                         break
                     }
@@ -72,10 +74,10 @@
                 this.model.data.songs.push(data)
                 this.view.render(this.model.data)
             })
-            window.eventHub.on('update', (song)=>{
+            window.eventHub.on('update', (song) => {
                 let songs = this.model.data.songs
-                for(let i=0; i<songs.length; i++){
-                    if(songs[i].id === song.id){
+                for (let i = 0; i < songs.length; i++) {
+                    if (songs[i].id === song.id) {
                         Object.assign(songs[i], song)
                     }
                 }

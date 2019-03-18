@@ -84,7 +84,7 @@
             this.view.render(this.model.data)
 
         },
-        save(){
+        create(){
             let needs = 'name singer url'.split(' ')
             let data = {}
             needs.map((string) => {
