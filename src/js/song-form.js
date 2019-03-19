@@ -117,7 +117,6 @@
                 }else{
                     this.create()
                 }
-
             })
         },
         bindEventHub() {
