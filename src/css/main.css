@@ -1,5 +1,6 @@
 *{margin:0; padding:0; box-sizing: border-box; }
 *::before, *after{box-sizing: border-box;}
+a{text-decoration: none;}
 @keyframes circle{
     0%{
         tranform: rotate(0deg);
@@ -17,11 +18,12 @@
 }
 .disc-container{
     position: relative;
+    flex-grow: 1;
 }
 .disc-container .pointer{
     width: 24vw;
     position: absolute;
-    left: 43vw;
+    left: 46vw;
 }
 .disc-container .disc{
     display: flex;
@@ -29,25 +31,99 @@
     align-items: center;
     margin-top: 18vw;
 }
+.disc .icon-wrapper{
+    position: absolute;
+    z-index: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    height: 20vw;
+    width: 20vw;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3)
+}
+.disc .icon-wrapper.active{
+    display: flex;
+}
+.disc-container .icon{
+    width: 10vw;
+    fill:white;
+}
 .disc-container .ring{
     width: 72vw;
 }
 
 .disc-container .light{
     width: 72vw;
-    position: absolute;
-    animation: circle 20s infinite linear;
-
 }
 .disc-container .cover{
     width: 50vw;
     border-radius: 44.5%;
+}
+.disc-container .light,
+.disc-container .cover{
     position: absolute;
     animation: circle 20s infinite linear;
 }
+.disc-container.playing .icon-pause{
+    display: block;
+}
+.disc-container.playing .icon-play{
+    display: none;
+}
+.disc-container .light.pause,
+.disc-container .cover.pause{
+    animation-play-state: paused;
+}
+.disc-container .icon-pause{
+    display: none;
+}
+.disc-container .icon-play{
+    display: block;
+}
+
+
 .song-description{
+    text-align: center;
 
 }
+.song-description .lyric{
+    height: 72px;
+    overflow: hidden;
+}
+.song-description .lines{
+    transform: translateY()
+}
+.song-description h1{
+    font-size: 18px;
+    color: #FEFEFE;
+}
+.song-description p{
+    font-size: 14px;
+    color: #9F9F9F;
+    line-height: 24px;
+}
+.song-description p:active{
+    
+}
 .page > .links{
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page > .links > a{
+    width: 38.5vw;
+    margin: 1em;
+    text-align: center;
+    border: 1px solid #D23A31;
+    background: transparent;
+    color: #D23A31;
+    padding: 1.5vw;
+    border-radius: 6px;
+    letter-spacing: 1vw;
+}
+.page > .links > a.main{
+    background: #D23A31;
+    color: white;
 }
