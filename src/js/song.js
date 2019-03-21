@@ -17,15 +17,12 @@ $(function(){
     })
 
     let audio = document.createElement('audio')
-    audio.src = "http://isure.stream.qqmusic.qq.com/C400001luHbo2nQT1Y.m4a?guid=8559318062&vkey=7561EC0BE0FE9F8EC2D4C3D312B1ECB1FAC7E8D521B465461FE852D48A986DF525B65700E35B7012D77E1FFECFF557F6DE6D418C0811BDA2&uin=0&fromtag=66"
-    setTimeout(() => {
-        $('.icon-wrapper').addClass('active')
-    }, 1000);
+    audio.src = "http://poapwo9ks.bkt.clouddn.com/green.mp3"
+
     audio.oncanplay = function(){
         audio.play()
-        $('.disc-container').addClass('playing')
     }
-    $('.icon-pause').on('click', ()=>{
+    $('img.cover').on('click', ()=>{
         audio.pause()
         $('.disc-container').removeClass('playing')   
         $('.disc-container .light').addClass('pause') 
