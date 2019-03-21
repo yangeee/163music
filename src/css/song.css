@@ -15,7 +15,7 @@ a{text-decoration: none;}
     display: flex;
     flex-direction: column;
     background: transparent url(../../image/2.jpg) no-repeat center;
-    background-size: cover;
+    background-size: center;
 }
 .page-wrapper{
     height: 100vh;
@@ -85,11 +85,13 @@ a{text-decoration: none;}
 
 .song-description{
     text-align: center;
-
+    margin: 5vw;
+    font-family: Helvetica, sans-serif;
 }
 .song-description .lyric{
-    height: 72px;
+    height: 105px;
     overflow: hidden;
+    border: 1px solid red;
 }
 .song-description .lines{
     transform: translateY()
@@ -99,9 +101,10 @@ a{text-decoration: none;}
     color: #FEFEFE;
 }
 .song-description p{
-    font-size: 14px;
+    font-size: 16px;
     color: #9F9F9F;
     line-height: 24px;
+    margin: 2vw;
 }
 .song-description p:active{
     

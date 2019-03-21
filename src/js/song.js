@@ -2,6 +2,7 @@ $(function(){
     $.get('./lyric/xiaochou.json').then(function(object){
         let {lyric} = object
         let array = lyric.split('\n')
+
         let regex = /^\[(.+)\](.*)$/
         array = array.map(function(string){
             let matches = string.match(regex)
