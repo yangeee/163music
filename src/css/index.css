@@ -48,7 +48,7 @@ section > h2:first-child{
 
 /*     siteNav       */
 .siteNav{
-
+    
 }
 .siteNav > ol{
     display: flex;
@@ -99,8 +99,8 @@ section > h2:first-child{
 }
 
 /*     latestMusic       */
-.latestMusic{
-    
+.latestMusic a{
+    color: inherit;
 }
 .latestMusic > ol{
     padding-left: calc(2px + 2.1vw);
@@ -109,9 +109,10 @@ section > h2:first-child{
     font-size: 4.2vw;
     border-bottom: 1px solid #E2E2E3;
     position: relative;
-    padding-bottom: 2vw;
+    padding-bottom: 1.5vw;
+    padding-top: 1.5vw;
 }
-.latestMusic > ol > li > h3{
+.latestMusic > ol > li  h3{
     max-width: 88vw;
     font-size: 4.7vw;
     overflow: hidden;
@@ -119,9 +120,12 @@ section > h2:first-child{
     white-space: nowrap;
     word-break: normal;
 }
-.latestMusic > ol > li > p{
+.latestMusic > ol > li  p{
     font-size: 3.3vw;
     color: #888;
+}
+.latestMusic > ol > p:first-child{
+    text-align: center;
 }
 .latestMusic svg{
     fill: rgba(0, 0, 0,0.4);
