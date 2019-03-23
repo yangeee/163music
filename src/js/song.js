@@ -29,7 +29,7 @@ $(function(){
         $('.disc-container .light').addClass('pause') 
         $('.disc-container .cover').addClass('pause') 
     })
-    $('.icon-play').on('click', ()=>{
+    $('.icon-wrapper').on('click', ()=>{
         audio.play()
         $('.disc-container').addClass('playing')    
         $('.disc-container .light').removeClass('pause') 
