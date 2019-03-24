@@ -46,5 +46,30 @@ $(function(){
             $('.disc-container .light').removeClass('pause') 
             $('.disc-container .cover').removeClass('pause') 
         })
+
+        setInterval(()=>{
+            let seconds = audio.currentTime + 0.7
+            let minutes = ~~(seconds / 60)
+            let left = seconds - minutes * 60
+            let time = `${pad(minutes)}:${pad(left)}`
+            let $lines = $('.lines > p')
+            let $whichLine
+            for(let i=0; i<$lines.length; i++){
+                if($lines.eq(i+1).length !== 0 && $lines.eq(i).attr('data-time') < time && $lines.eq(i+1).attr('data-time') > time){
+                    $whichLine = $lines.eq(i)
+                    break
+                }
+            }
+            if($whichLine){
+                $whichLine.addClass('active').prev().removeClass('active')
+                let top = $whichLine.offset().top
+                let linesTop = $('.lines').offset().top
+                let delta = top - linesTop - $('.lyric').height()/3
+                $('.lines').css('transform', `translateY(-${delta}px)`)
+            }
+        },100)
+    }
+    function pad(number){
+        return number>=10 ? number+'' :'0'+number
     }
 })

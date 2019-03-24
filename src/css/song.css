@@ -82,7 +82,7 @@ a{text-decoration: none;}
     display: block;
 }
 
-
+/*     song-description    */
 .song-description{
     text-align: center;
     margin: 5vw;
@@ -94,8 +94,8 @@ a{text-decoration: none;}
     border: 1px solid red;
 }
 .song-description .lines{
-    transform: translateY()
-}
+    transition: transform 0.3s;
+} 
 .song-description h1{
     font-size: 18px;
     color: #FEFEFE;
@@ -106,8 +106,8 @@ a{text-decoration: none;}
     line-height: 24px;
     margin: 2vw;
 }
-.song-description p:active{
-    
+.song-description p.active{
+    color: white;
 }
 .page > .links{
     display: flex;
