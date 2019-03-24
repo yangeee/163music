@@ -20,7 +20,7 @@ header > svg{
 section > h2:first-child{
     font-size: 4.4vw;
     border-left: 2px solid #D43C33;
-    margin: 5.8vw 0;
+    margin: 6.2vw 0 4.5vw 0;
     padding-left: 2.1vw;
     line-height: 1;
 }
@@ -123,6 +123,7 @@ section > h2:first-child{
 .latestMusic > ol > li  p{
     font-size: 3.3vw;
     color: #888;
+    margin-top: .5vw;
 }
 .latestMusic > ol > p:first-child{
     text-align: center;

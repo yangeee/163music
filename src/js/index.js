@@ -6,7 +6,7 @@ $(function () {
                 <li>
                     <a href="./song.html?id=${i.id}">
                         <h3>${i.name}</h3>
-                        <p><i class="sq-img"></i>演唱者-专辑</p>
+                        <p><i class="sq-img"></i>${i.singer}-${i.Album}</p>
                         <svg class="icon" aria-hidden="true">
                             <use xlink: href='#icon-play-circle-outline'>
                             </use>

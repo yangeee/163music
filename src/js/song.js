@@ -4,7 +4,31 @@ $(function(){
     $.get('./songs.json').then((response)=>{
         let songs = response
         let song = songs.filter(s => s.id === id)[0]
-        let {url} = song
+        let {url, name, lyric} = song
+        initPlayer.call(undefined, url)
+        initText(name, lyric)
+    })
+
+    function parseLyric(lyric){
+        let array = lyric.split('\n')
+        let regex = /^\[(.+)\](.*)$/
+        array = array.map(function(string){
+            let matches = string.match(regex)
+            if(matches){
+                return {time: matches[1], words:matches[2]}
+            }
+        })
+        array.map((object)=>{
+            let $p = $('<p/>')
+            if(!object)return
+            $p.attr('data-time', object.time).text(object.words).appendTo('.lines')
+        })
+    }
+    function initText(name, lyric){
+        $('.song-description > h1').text(name)
+        parseLyric(lyric)
+    }
+    function initPlayer(url){
         let audio = document.createElement('audio')
         audio.src = url
         audio.oncanplay = function(){
@@ -22,22 +46,5 @@ $(function(){
             $('.disc-container .light').removeClass('pause') 
             $('.disc-container .cover').removeClass('pause') 
         })
-    })
-    $.get('./lyric/xiaochou.json').then(function(object){
-        let {lyric} = object
-        let array = lyric.split('\n')
-
-        let regex = /^\[(.+)\](.*)$/
-        array = array.map(function(string){
-            let matches = string.match(regex)
-            if(matches){
-                return {time: matches[1], words:matches[2]}
-            }
-        })
-        array.map((object)=>{
-            let $p = $('<p/>')
-            if(!object)return
-            $p.attr('data-time', object.time).text(object.words).appendTo('.lines')
-        })
-    })
+    }
 })
