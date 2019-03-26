@@ -58,19 +58,25 @@ $(function(){
             let $lines = $('.lines > p')
             let $whichLine
             for(let i=0; i<$lines.length; i++){
-                if($lines.eq(i+1).length !== 0 && $lines.eq(i).attr('data-time') < time && $lines.eq(i+1).attr('data-time') > time){
+                if(i!==$lines.length-1 && $lines.eq(i).attr('data-time') < time && $lines.eq(i+1).attr('data-time') > time){
                     $whichLine = $lines.eq(i)
                     break
+                }else{
+                    $whichLine = $lines.eq(i)
                 }
             }
             if($whichLine){
-                $whichLine.addClass('active').prev().removeClass('active')
-                let top = $whichLine.next().offset().top
-                let linesTop = $('.lines').offset().top
-                let delta = top - linesTop - $('.lyric').height()/2
-                $('.lines').css('transform', `translateY(-${delta}px)`)
+               lyricScroll($whichLine)
             }
         },100)
+    }
+    function lyricScroll(whichLine){
+        whichLine.addClass('active').prev().removeClass('active')
+        if(whichLine.next()===undefined) return
+        let top = whichLine.next().offset().top
+        let linesTop = $('.lines').offset().top
+        let delta = top - linesTop - $('.lyric').height()/2
+        $('.lines').css('transform', `translateY(-${delta}px)`)
     }
     function pad(number){
         return number>=10 ? number+'' :'0'+number
