@@ -15,7 +15,10 @@ $(function(){
         array = array.map(function(string){
             let matches = string.match(regex)
             if(matches){
-                return {time: matches[1], words:matches[2]}
+                if(matches[2] === '') 
+                  return
+                else
+                  return {time: matches[1], words:matches[2]}
             }
         })
         array.map((object)=>{
@@ -48,7 +51,7 @@ $(function(){
         })
 
         setInterval(()=>{
-            let seconds = audio.currentTime + 0.7
+            let seconds = audio.currentTime 
             let minutes = ~~(seconds / 60)
             let left = seconds - minutes * 60
             let time = `${pad(minutes)}:${pad(left)}`
@@ -62,9 +65,9 @@ $(function(){
             }
             if($whichLine){
                 $whichLine.addClass('active').prev().removeClass('active')
-                let top = $whichLine.offset().top
+                let top = $whichLine.next().offset().top
                 let linesTop = $('.lines').offset().top
-                let delta = top - linesTop - $('.lyric').height()/3
+                let delta = top - linesTop - $('.lyric').height()/2
                 $('.lines').css('transform', `translateY(-${delta}px)`)
             }
         },100)
