@@ -30,7 +30,6 @@ a{text-decoration: none;}
     width: 24vw;
     position: absolute;
     left: 46vw;
-    top: -18vw;
 }
 .disc-container .disc{
     display: flex;
