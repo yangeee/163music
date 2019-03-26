@@ -29,7 +29,7 @@ a{text-decoration: none;}
 .disc-container .pointer{
     width: 24vw;
     position: absolute;
-    left: 46vw;
+    left: 47vw;
 }
 .disc-container .disc{
     display: flex;
@@ -62,7 +62,7 @@ a{text-decoration: none;}
 }
 
 .disc-container .cover{
-    width: 50vw;
+    width: 53vw;
     border-radius: 50%;
 }
 .disc-container .light,
