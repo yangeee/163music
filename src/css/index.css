@@ -77,6 +77,12 @@ section > h2:first-child{
     left: -1.4vw;
     border-top: 2px solid #D43C33;
 }
+.tabContent > li{
+    display: none;
+}
+.tabContent > li.active{
+    display: block;
+}
 
 /*       playList         */
 .playLists > ul{

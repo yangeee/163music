@@ -90,7 +90,6 @@ a{text-decoration: none;}
 .song-description .lyric{
     height: 75px;
     overflow: hidden;
-    border: 1px solid red;
 }
 .song-description .lines{
     transition: transform 0.3s;
