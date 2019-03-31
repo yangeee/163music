@@ -1,6 +1,6 @@
 *{margin:0; padding:0; box-sizing: border-box; }
 *::before, *after{box-sizing: border-box;}
-a{text-decoration: none; -webkit-tap-highlight-color: transparent;outline: none;}
+body{-webkit-tap-highlight-color:transparent;}
 ul,ol{list-style: none;}
 h1,h2,h3{font-weight: normal;}
 .icon {
