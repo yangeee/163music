@@ -65,6 +65,7 @@ section > h2:first-child{
     display: inline-block;
     height: 10.5vw;
     line-height: 11vw;
+    cursor: pointer;
 }
 .siteNav > ol > li.active > span{
     color: #D43C33;
