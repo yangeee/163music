@@ -113,14 +113,15 @@ a{text-decoration: none;}
     color: white;
 }
 
-
-.page-wrapper > .links{
+/*        links         */
+.links-wrapper > .links{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 1.5vw 2.7vw;
+    padding: 0 1.5vw 2.7vw;
 }
-.page-wrapper > .links  a{
+
+.links-wrapper > .links  a{
     font-size: 18px;
     width: 50vw;
     text-align: center;
@@ -132,7 +133,13 @@ a{text-decoration: none;}
     letter-spacing: 1.1vw;
     margin: 0 1.1vw;
 }
-.page-wrapper > .links > a.main{
+.links-wrapper > .links > a.main{
     background: #D23A31;
     color: white;
+}
+.links-wrapper{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
 }
