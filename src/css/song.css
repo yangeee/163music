@@ -24,10 +24,11 @@ a{text-decoration: none;}
 /*          disc-container         */
 .disc-container{
     position: relative;
+    flex-grow: 1;
 }
 .disc-container .svg-logo{
     width: 25vw;
-    position: relative;
+    position: absolute;
     top: 3vw;
     left:2.6vw;
 }
